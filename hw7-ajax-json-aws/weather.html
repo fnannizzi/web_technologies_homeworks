@@ -1,0 +1,94 @@
+<html><head>
+	<meta charset="utf-8">
+  <title>HW8</title>
+   
+  <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script> 
+  <script language="javascript">
+    var req;
+    
+    function callback() {
+      if (req.readyState==4 && req.status==200){
+          var doc = eval('(' + req.responseText + ')');
+          alert(req.responseText);
+        }
+    }
+    
+    function loadXMLDoc() {
+      
+      if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+        req = new XMLHttpRequest();
+      }
+      else{ // code for IE6, IE5
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      var url = "http://cs-server.usc.edu:65223/examples/servlet/weathersearch";
+      var params = "?location=90089&type=zip&tempUnit=f";
+      
+      req.open("GET", url, true);
+      req.onreadystatechange = function() {
+        if (req.readyState==4 && req.status==200){
+          var doc = eval('(' + req.responseText + ')');
+          document.getElementById("myDiv").innerHTML=req.responseText;
+        }
+      }
+      req.setRequestHeader("Connection", "Close");
+      req.setRequestHeader("Method", "GET" + url + params + "HTTP/1.1");
+      req.send();
+    }
+    
+    function validate(){ 
+        if((document.forms["searchForm"]["location"].value=="") || (document.forms["searchForm"]["location"].value==null)){ // check to make sure a location was entered
+            window.alert("Please enter a location.");
+            return false;
+        }
+        /*if (document.getElementById('dropdown').selectedIndex == 0) { // the location is a city
+            var re = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+            var match = re.exec(document.forms["searchForm"]["location"].value);
+            if (!match) {
+                window.alert("If searching for a city, ensure the city name contains only letters and single spaces.");
+                return false;
+            }
+        }
+        if (document.getElementById('dropdown').selectedIndex == 1) { // the location is a zip code
+            var re = /^(?:\d{5})$/;
+            var match = re.exec(document.forms["searchForm"]["location"].value);
+            if (!match) {
+                window.alert("If searching for a zip code, ensure the zip code is composed of 5 numbers.");
+                return false;
+            }
+        }*/
+        return true;
+    }
+  </script>
+				
+  <style type="text/css">
+      .searchForm {
+          height: 100px;
+          width: 400px;
+          border: 4px double black;
+          margin: 0 auto;
+          padding: 20px;
+      }
+
+      .input-rounded-button {
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          border: 1px solid gray;
+          font-size: 12px;
+          cursor: pointer;
+      }
+  </style>
+</head><body>
+  <div style="text-align: center;"><h3>Weather Search</h3></div>
+
+  <div class="searchForm">
+      <form name="searchForm" onsubmit="loadXMLDoc()">
+          Location: <input type="text" name="location" style="width: 230px; margin-left: 100px; margin-bottom: 10px;"><br>
+          <br><div style="text-align: center; margin-top: 10px;"><input class="input-rounded-button" type="submit" name="submit" value="Search"></div>
+      </form>
+      <div id="myDiv"></div>
+  </div>
+</body></html>
+
