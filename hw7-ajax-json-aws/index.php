@@ -176,41 +176,41 @@
                 $attr = $forecast->attributes(); 
                 if(isset($attr['day'])){
                     if($attr['day'] != ""){
-                        $forecastData->addAttribute('day', $attr['day']);
+                        $forecastData->addAttribute('Day', $attr['day']);
                     }		
-                    else { $forecastData->addAttribute('day', ''); } 
+                    else { $forecastData->addAttribute('Day', ''); } 
                 }
-                else { $forecastData->addAttribute('day', ''); }
+                else { $forecastData->addAttribute('Day', ''); }
                 
                 if(isset($attr['low'])){
                     if($attr['low'] != ""){
-                        $forecastData->addAttribute('low', $attr['low']);
+                        $forecastData->addAttribute('Low', $attr['low']);
                     }		
-                    else { $forecastData->addAttribute('low', ''); } 
+                    else { $forecastData->addAttribute('Low', ''); } 
                 }
-                else { $forecastData->addAttribute('low', ''); }
+                else { $forecastData->addAttribute('Low', ''); }
                 
                 if(isset($attr['high'])){
                     if($attr['high'] != ""){
-                        $forecastData->addAttribute('high', $attr['high']);
+                        $forecastData->addAttribute('High', $attr['high']);
                     }		
-                    else { $forecastData->addAttribute('high', ''); } 
+                    else { $forecastData->addAttribute('High', ''); } 
                 }
-                else { $forecastData->addAttribute('high', ''); }
+                else { $forecastData->addAttribute('High', ''); }
                 
                 if(isset($attr['text'])){
                     if($attr['text'] != ""){
-                        $forecastData->addAttribute('text', $attr['text']);
+                        $forecastData->addAttribute('Weather', $attr['text']);
                     }		
-                    else { $forecastData->addAttribute('text', ''); } 
+                    else { $forecastData->addAttribute('Weather', ''); } 
                 }
-                else { $forecastData->addAttribute('text', ''); }
+                else { $forecastData->addAttribute('Weather', ''); }
             }
             else {
-              $forecastData->addAttribute('day', '');
-              $forecastData->addAttribute('low', '');
-              $forecastData->addAttribute('high', '');
-              $forecastData->addAttribute('text', '');
+              $forecastData->addAttribute('Day', '');
+              $forecastData->addAttribute('Low', '');
+              $forecastData->addAttribute('High', '');
+              $forecastData->addAttribute('Weather', '');
             }
           }
         }
