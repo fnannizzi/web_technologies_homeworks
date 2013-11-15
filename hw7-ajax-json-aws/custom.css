@@ -5,6 +5,11 @@ body {
   margin: 30px auto;
 }
 
+h1 {
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  color: white; 
+}
+
 .label {
   font-size: 1.5em;
   font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;

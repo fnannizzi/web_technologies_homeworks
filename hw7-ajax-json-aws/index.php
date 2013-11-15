@@ -71,8 +71,6 @@
         $location = $response->addChild('location');
         $units = $response->addChild('units');
         $condition = $response->addChild('condition');
-        $forecasts = $response->addChild('forecasts');
-      
         
         if($loc->channel->item->link){
           $channel = $loc->channel;
@@ -172,7 +170,7 @@
           // Forecast
           foreach($yweather_item->forecast as $forecast) {
             if($forecast->attributes()){
-                $forecastData = $forecasts->addChild('forecast');
+                $forecastData = $response->addChild('forecast');
                 $attr = $forecast->attributes(); 
                 if(isset($attr['day'])){
                     if($attr['day'] != ""){
