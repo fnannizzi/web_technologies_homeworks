@@ -16,7 +16,7 @@ public class WeatherSearch extends HttpServlet {
     String urlStr = "http://default-environment-xizqxi8m9e.elasticbeanstalk.com/";
     urlStr = urlStr + "?location=" + location + "&type=" + type + "&tempUnit=" + tempUnit; 
      
-    response.setContentType("text/plain"); 
+    response.setContentType("text/JSON"); 
     URL url = new URL(urlStr);
     URLConnection c = url.openConnection();
     BufferedReader in = new BufferedReader(
